@@ -11,4 +11,8 @@ import { Article } from '../../models/article';
 })
 export class ProductcardComponent {
   @Input() article!: Article;
+
+  onAddToCart(): void {
+    console.log('Ajout au panier :', this.article);
+  }
 }

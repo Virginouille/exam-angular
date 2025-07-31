@@ -40,4 +40,5 @@ export class ProductListComponent implements OnInit {
       this.filteredArticles = this.allArticles.filter(a => a.category === filter);
     }
   }
+
 }
