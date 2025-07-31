@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductserviceService } from '../../services/productservice.service';
 import { Article } from '../../models/article';
 import { ProductListComponent } from '../product-list/product-list.component';
-import { NavbarComponent } from "../navbar/navbar.component";
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
