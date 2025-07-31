@@ -1,0 +1,36 @@
+<div class="container my-5">
+    <h1 class="fw-bold mb-4">Notre Catalogue</h1>
+
+    <div class="mb-4">
+        <div class="btn-group flex-wrap" role="group">
+            <button (click)="setFilter('all')" class="btn" [class.btn-primary]="activeFilter === 'all'"
+                [class.btn-outline-secondary]="activeFilter !== 'all'">Tous</button>
+            <button (click)="setFilter('climatiseur')" class="btn" [class.btn-primary]="activeFilter === 'climatiseur'"
+                [class.btn-outline-secondary]="activeFilter !== 'climatiseur'">Climatiseurs</button>
+            <button (click)="setFilter('ventilateur')" class="btn" [class.btn-primary]="activeFilter === 'ventilateur'"
+                [class.btn-outline-secondary]="activeFilter !== 'ventilateur'">Ventilateurs</button>
+            <button (click)="setFilter('refroidisseur')" class="btn"
+                [class.btn-primary]="activeFilter === 'refroidisseur'"
+                [class.btn-outline-secondary]="activeFilter !== 'refroidisseur'">Refroidisseurs</button>
+            <button (click)="setFilter('promo')" class="btn d-flex align-items-center"
+                [class.btn-primary]="activeFilter === 'promo'" [class.btn-outline-secondary]="activeFilter !== 'promo'">
+                <span class="material-icons small me-1">sell</span> Promotions
+            </button>
+        </div>
+    </div>
+
+    @if (isLoading) {
+    <app-loader></app-loader>
+    } @else {
+    <div class="row g-4">
+        @for (article of filteredArticles; track article.id) {
+        <div class="col-sm-6 col-lg-4 col-xl-3">
+            <app-productcard [article]="article"></app-productcard>
+        </div>
+        }
+    </div>
+    @if (filteredArticles.length === 0) {
+    <p class="text-center text-muted py-5">Aucun produit ne correspond à votre recherche.</p>
+    }
+    }
+</div>
