@@ -4,11 +4,12 @@ import { ProductserviceService } from '../../services/productservice.service';
 import { Article } from '../../models/article';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { FooterComponent } from "../footer/footer.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ProductListComponent, NavbarComponent],
+  imports: [CommonModule, ProductListComponent, NavbarComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

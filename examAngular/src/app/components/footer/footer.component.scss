@@ -1,0 +1,50 @@
+.custom-footer {
+    font-family: 'Segoe UI', sans-serif;
+    border: 2px solid rgba(0, 110, 140, 0.15);
+    border-radius: 1rem;
+    box-shadow: 0 0.25rem 1rem rgba(0, 110, 140, 0.08);
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    color: #00475c;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 110, 140, 0.15);
+        border-color: rgba(0, 110, 140, 0.3);
+    }
+
+    .footer-title {
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-text {
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .footer-links {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1.5rem;
+
+        a {
+            color: #006e8c;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+
+            &:hover,
+            &:focus {
+                color: #00475c;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .footer-bottom {
+        margin-top: 1.5rem;
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+}

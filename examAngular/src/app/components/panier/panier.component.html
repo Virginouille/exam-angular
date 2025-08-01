@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
-<div class="container mt-5">
-    <h2 class="mt-5">Panier</h2>
+<div class="container mt-5 custom-cart">
+    <h2 class="fw-bold d-flex justify-content-center my-5">Panier</h2>
 
     @if (isLoading) {
     <app-loader></app-loader>
@@ -10,38 +10,40 @@
     } @else if (panier.length > 0) {
     <div class="list-group">
         @for (item of panier; track item.article.id) {
-        <div class="list-group-item d-flex justify-content-between align-items-center">
-            <div>
+        <div class="list-group-item d-flex justify-content-between align-items-start flex-column flex-md-row">
+            <div class="me-md-3 flex-grow-1">
                 <h5>{{ item.article.title }}</h5>
                 <p class="mb-1">{{ item.article.description }}</p>
                 <p>
                     Quantité :
-                    <input type="number" [(ngModel)]="item.quantite" class="form-control d-inline-block"
-                        style="width: 70px;">
+                    <input type="number" [(ngModel)]="item.quantite" class="form-control d-inline-block">
                 </p>
             </div>
-            <div class="text-end">
-                <p><strong>
+            <div class="text-end mt-3 mt-md-0">
+                <p>
+                    <strong>
                         Total :
                         {{
                         (item.article.fullPrice * (1 - item.article.discountPercent) * item.quantite)
                         | number: '1.2-2'
                         }} €
-                    </strong></p>
-                <button class="btn btn-danger btn-sm" (click)="retirerDuPanier(item.article)">Retirer</button>
+                    </strong>
+                </p>
+                <button class="btn btn-danger btn-sm" (click)="retirerDuPanier(item.article)">
+                    Retirer
+                </button>
             </div>
         </div>
         }
     </div>
 
-    <h4 class="text-end mt-4">
+    <h4 class="total-general">
         Total général : {{ calculerTotal() | number: '1.2-2' }} €
     </h4>
 
-    <div class="text-end mt-3">
+    <div class="vider-panier-btn">
         <button class="btn btn-outline-danger btn-sm" (click)="viderPanier()">Vider le panier</button>
     </div>
-
     } @else {
     <div class="alert alert-info">Votre panier est vide.</div>
     }

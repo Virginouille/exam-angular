@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-5">
-    <h2>Ventilateurs</h2>
+    <h2 class="fw-bold d-flex justify-content-center my-5">Ventilateurs</h2>
 
     @if (isLoading) {
     <app-loader></app-loader>
@@ -14,6 +14,6 @@
         }
     </div>
     } @else {
-    <p class="text-muted text-center py-5">Aucun climatiseur trouvé.</p>
+    <p class="text-muted text-center py-5">Aucun ventilateur trouvé.</p>
     }
 </div>

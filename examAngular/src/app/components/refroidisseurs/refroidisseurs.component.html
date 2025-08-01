@@ -1,1 +1,19 @@
-<p>refroidisseurs works!</p>
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+    <h2 class="fw-bold d-flex justify-content-center my-5">Refroidisseurs</h2>
+
+    @if (isLoading) {
+    <app-loader></app-loader>
+    } @else if (filteredArticles.length > 0) {
+    <div class="row g-4">
+        @for (article of filteredArticles; track article.id) {
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <app-productcard [article]="article"></app-productcard>
+        </div>
+        }
+    </div>
+    } @else {
+    <p class="text-muted text-center py-5">Aucun refroidisseur trouvé.</p>
+    }
+</div>
