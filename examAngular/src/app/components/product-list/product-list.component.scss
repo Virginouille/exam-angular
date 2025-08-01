@@ -1,0 +1,41 @@
+.filter-container {
+    font-family: 'Segoe UI', sans-serif;
+    margin-bottom: 1.5rem;
+
+    .btn-group {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        .btn {
+            border-radius: 0.5rem;
+            border: 2px solid rgba(0, 110, 140, 0.15);
+            background-color: #fff;
+            color: #006e8c;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+
+            &.btn-primary {
+                background-color: #006e8c;
+                border-color: #006e8c;
+                color: #fff;
+                box-shadow: 0 0 8px rgba(0, 110, 140, 0.4);
+            }
+
+            &:not(.btn-primary):hover {
+                background-color: rgba(0, 110, 140, 0.1);
+                border-color: rgba(0, 110, 140, 0.3);
+                color: #00475c;
+                cursor: pointer;
+            }
+
+            .material-icons {
+                font-size: 18px;
+                color: inherit;
+            }
+        }
+    }
+}

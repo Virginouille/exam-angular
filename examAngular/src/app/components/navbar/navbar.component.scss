@@ -1,0 +1,68 @@
+.custom-navbar {
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.3s ease-in-out;
+    background-color: #fdfdfd;
+
+    .navbar-brand {
+        font-size: 1.8rem;
+        color: #006e8c;
+        letter-spacing: 1px;
+        font-weight: 600;
+
+        &:hover {
+            color: #00475c;
+        }
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        color: #333;
+        position: relative;
+        transition: color 0.3s;
+
+        &.active,
+        &:hover {
+            color: #006e8c;
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #006e8c;
+            transition: width 0.3s;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        &:hover:after {
+            width: 100%;
+        }
+    }
+
+    .btn-outline-primary {
+        border-width: 2px;
+        font-weight: 500;
+        border-color: #006e8c;
+        color: #006e8c;
+
+        &:hover {
+            background-color: #006e8c;
+            color: #fff;
+        }
+    }
+
+    .navbar-toggler {
+        border: none;
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280,110,140,0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+        }
+    }
+}

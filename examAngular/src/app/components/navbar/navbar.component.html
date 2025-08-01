@@ -1,23 +1,25 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-white shadow-sm custom-navbar">
     <div class="container-fluid">
-        <a [routerLink]="['/home']" class="navbar-brand">VentTop</a>
+        <a [routerLink]="['/home']" class="navbar-brand fw-semibold">VentTop</a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav gap-lg-4">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Climatiseurs</a>
+                    <a [routerLink]="['/climatiseurs']" class="nav-link" routerLinkActive="active">Climatiseurs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Ventilateurs</a>
+                    <a [routerLink]="['/ventilateurs']" class="nav-link" routerLinkActive="active">Ventilateurs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Refroidisseurs</a>
+                    <a [routerLink]="['/refroidisseurs']" class="nav-link" routerLinkActive="active">Refroidisseurs</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['/panier']" class="nav-link active" aria-current="page">Panier</a>
+                    <a [routerLink]="['/panier']" class="btn btn-outline-primary rounded-pill px-3 py-1">Panier</a>
                 </li>
             </ul>
         </div>
