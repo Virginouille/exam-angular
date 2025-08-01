@@ -25,7 +25,7 @@
     <div class="row g-4">
         @for (article of filteredArticles; track article.id) {
         <div class="col-sm-6 col-lg-4 col-xl-3">
-            <app-productcard [article]="article"></app-productcard>
+            <app-productcard [article]="article" (ajouterAuPanier)="ajouterAuPanier($event)"></app-productcard>
         </div>
         }
     </div>

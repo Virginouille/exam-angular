@@ -6,7 +6,6 @@ import { Article } from '../../models/article';
 import { ProductcardComponent } from '../productcard/productcard.component';
 import { PanierStorageService } from '../../services/panier-storage.service';
 
-
 @Component({
   selector: 'app-panier',
   standalone: true,
@@ -27,6 +26,7 @@ export class PanierComponent implements OnInit {
       this.produits = data;
 
       const panierStocke = this.panierStorage.getPanier();
+      console.log('Panier stocké récupéré :', panierStocke);
       this.panier = panierStocke.map(item => {
         const article = data.find(p => p.id === item.article.id);
         return article ? { article, quantite: item.quantite } : null;
@@ -34,6 +34,7 @@ export class PanierComponent implements OnInit {
     });
   }
 
+  //Méthode pour ajouter au panier
   ajouterAuPanier(article: Article): void {
     const existant = this.panier.find(p => p.article.id === article.id);
     if (existant) {
@@ -44,6 +45,7 @@ export class PanierComponent implements OnInit {
     this.panierStorage.setPanier(this.panier);
   }
 
+  //Méthode pour retirer du panier
   retirerDuPanier(article: Article): void {
     this.panier = this.panier.filter(p => p.article.id !== article.id);
     this.panierStorage.setPanier(this.panier);

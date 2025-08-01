@@ -18,5 +18,6 @@ export class ProductcardComponent {
 
   onAddToCart(): void {
     console.log('Ajout au panier :', this.article);
+    this.ajouterAuPanier.emit(this.article);
   }
 }

@@ -4,6 +4,7 @@ import { ProductserviceService } from '../../services/productservice.service';
 import { Article } from '../../models/article';
 import { LoaderComponent } from '../loader/loader.component';
 import { ProductcardComponent } from '../productcard/productcard.component';
+import { PanierStorageService } from '../../services/panier-storage.service';
 
 @Component({
   selector: 'app-product-list',
@@ -20,7 +21,9 @@ export class ProductListComponent implements OnInit {
   isLoading = true;
 
   //Injection productservice
-  constructor(private productserviceService: ProductserviceService) { }
+  constructor(private productserviceService: ProductserviceService,
+    private panierstorageservice: PanierStorageService
+  ) { }
 
   ngOnInit(): void {
     this.productserviceService.getAll().subscribe((articles: Article[]) => {
@@ -39,6 +42,20 @@ export class ProductListComponent implements OnInit {
     } else {
       this.filteredArticles = this.allArticles.filter(a => a.category === filter);
     }
+  }
+
+  ajouterAuPanier(article: Article): void {
+    const panier = this.panierstorageservice.getPanier();
+
+    const existant = panier.find(p => p.article.id === article.id);
+    if (existant) {
+      existant.quantite++;
+    } else {
+      panier.push({ article, quantite: 1 });
+    }
+
+    this.panierstorageservice.setPanier(panier);
+    console.log('Article ajouté au panier :', article);
   }
 
 }
