@@ -22,4 +22,19 @@ export class PanierStorageService {
   clearPanier(): void {
     localStorage.removeItem(this.STORAGE_KEY);
   }
+
+  //Ajouter un article au panier
+  ajouterAuPanier(article: Article): void {
+    const panier = this.getPanier();
+
+    const existant = panier.find(p => p.article.id === article.id);
+    if (existant) {
+      existant.quantite++;
+    } else {
+      panier.push({ article, quantite: 1 });
+    }
+
+    this.setPanier(panier);
+    console.log('Article ajouté au panier :', article);
+  }
 }

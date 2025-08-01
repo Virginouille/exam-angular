@@ -4,6 +4,7 @@ import { ProductserviceService } from '../../services/productservice.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { ProductcardComponent } from '../productcard/productcard.component';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { PanierStorageService } from '../../services/panier-storage.service';
 
 @Component({
   selector: 'app-ventilateurs',
@@ -19,7 +20,9 @@ export class VentilateursComponent {
   activeFilter: 'ventilateur' = 'ventilateur';
   isLoading: boolean = true;
 
-  constructor(private productserviceService: ProductserviceService) { }
+  constructor(private productserviceService: ProductserviceService,
+    private panierstorageservice: PanierStorageService
+  ) { }
 
   ngOnInit(): void {
     this.productserviceService.getAll().subscribe({
@@ -40,6 +43,11 @@ export class VentilateursComponent {
     this.filteredArticles = this.allArticles.filter(
       article => article.category === 'ventilateur'
     );
+  }
+
+  //Ajouter au panier
+  ajouterAuPanier(article: Article): void {
+    this.panierstorageservice.ajouterAuPanier(article);
   }
 
 }

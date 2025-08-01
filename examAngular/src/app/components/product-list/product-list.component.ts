@@ -44,18 +44,9 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  //Ajouter au panier
   ajouterAuPanier(article: Article): void {
-    const panier = this.panierstorageservice.getPanier();
-
-    const existant = panier.find(p => p.article.id === article.id);
-    if (existant) {
-      existant.quantite++;
-    } else {
-      panier.push({ article, quantite: 1 });
-    }
-
-    this.panierstorageservice.setPanier(panier);
-    console.log('Article ajouté au panier :', article);
+    this.panierstorageservice.ajouterAuPanier(article);
   }
 
 }
