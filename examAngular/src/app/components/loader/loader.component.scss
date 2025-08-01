@@ -1,0 +1,29 @@
+/* Conteneur du loader pour centrer et ajouter un peu d’espace */
+.custom-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Style spécifique au spinner Bootstrap */
+.custom-loader .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.3rem;
+    border-color: rgba(0, 110, 140, 0.15);
+    border-top-color: #006e8c;
+    animation: spinner-border 0.75s linear infinite;
+}
+
+.custom-loader .visually-hidden {
+    position: static;
+    width: auto;
+    height: auto;
+    padding-left: 0.75rem;
+    color: #006e8c;
+    font-weight: 600;
+    font-family: 'Segoe UI', sans-serif;
+    user-select: none;
+    display: inline-block;
+}

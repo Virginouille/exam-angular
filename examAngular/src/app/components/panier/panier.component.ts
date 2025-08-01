@@ -6,11 +6,12 @@ import { Article } from '../../models/article';
 import { ProductcardComponent } from '../productcard/productcard.component';
 import { PanierStorageService } from '../../services/panier-storage.service';
 import { LoaderComponent } from '../loader/loader.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-panier',
   standalone: true,
-  imports: [CommonModule, FormsModule, ProductcardComponent, LoaderComponent],
+  imports: [CommonModule, FormsModule, ProductcardComponent, LoaderComponent, NavbarComponent],
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.scss']
 })

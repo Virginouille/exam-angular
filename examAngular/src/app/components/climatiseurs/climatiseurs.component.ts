@@ -3,11 +3,12 @@ import { Article } from '../../models/article';
 import { ProductserviceService } from '../../services/productservice.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { ProductcardComponent } from '../productcard/productcard.component';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-climatiseurs',
   standalone: true,
-  imports: [LoaderComponent, ProductcardComponent],
+  imports: [LoaderComponent, ProductcardComponent, NavbarComponent],
   templateUrl: './climatiseurs.component.html',
   styleUrls: ['./climatiseurs.component.scss']
 })

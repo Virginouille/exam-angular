@@ -3,14 +3,16 @@ import { Article } from '../../models/article';
 import { ProductserviceService } from '../../services/productservice.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { ProductcardComponent } from '../productcard/productcard.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-ventilateurs',
   standalone: true,
-  imports: [LoaderComponent, ProductcardComponent],
+  imports: [LoaderComponent, ProductcardComponent, NavbarComponent],
   templateUrl: './ventilateurs.component.html',
   styleUrl: './ventilateurs.component.scss'
 })
+
 export class VentilateursComponent {
   allArticles: Article[] = [];
   filteredArticles: Article[] = [];
