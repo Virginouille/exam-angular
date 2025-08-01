@@ -5,36 +5,52 @@ import { ProductserviceService } from '../../services/productservice.service';
 import { Article } from '../../models/article';
 import { ProductcardComponent } from '../productcard/productcard.component';
 import { PanierStorageService } from '../../services/panier-storage.service';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-panier',
   standalone: true,
-  imports: [CommonModule, FormsModule, ProductcardComponent],
+  imports: [CommonModule, FormsModule, ProductcardComponent, LoaderComponent],
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.scss']
 })
 export class PanierComponent implements OnInit {
   produits: Article[] = [];
   panier: { article: Article; quantite: number }[] = [];
+  isLoading: boolean = true;
+  errorMessage: string | null = null;
 
   constructor(
     private productService: ProductserviceService,
-    private panierStorage: PanierStorageService) { }
+    private panierStorage: PanierStorageService
+  ) { }
 
   ngOnInit(): void {
-    this.productService.getAll().subscribe(data => {
-      this.produits = data;
+    this.isLoading = true;
+    this.errorMessage = null;
 
-      const panierStocke = this.panierStorage.getPanier();
-      console.log('Panier stocké récupéré :', panierStocke);
-      this.panier = panierStocke.map(item => {
-        const article = data.find(p => p.id === item.article.id);
-        return article ? { article, quantite: item.quantite } : null;
-      }).filter(p => p !== null) as { article: Article, quantite: number }[];
+    this.productService.getAll().subscribe({
+      next: data => {
+        this.produits = data;
+
+        const panierStocke = this.panierStorage.getPanier();
+        console.log('Panier stocké récupéré :', panierStocke);
+
+        this.panier = panierStocke.map(item => {
+          const article = data.find(p => p.id === item.article.id);
+          return article ? { article, quantite: item.quantite } : null;
+        }).filter(p => p !== null) as { article: Article, quantite: number }[];
+
+        this.isLoading = false;
+      },
+      error: err => {
+        console.error('Erreur lors du chargement des produits :', err);
+        this.errorMessage = "Une erreur est survenue lors du chargement des produits.";
+        this.isLoading = false;
+      }
     });
   }
 
-  //Méthode pour ajouter au panier
   ajouterAuPanier(article: Article): void {
     const existant = this.panier.find(p => p.article.id === article.id);
     if (existant) {
@@ -45,7 +61,6 @@ export class PanierComponent implements OnInit {
     this.panierStorage.setPanier(this.panier);
   }
 
-  //Méthode pour retirer du panier
   retirerDuPanier(article: Article): void {
     this.panier = this.panier.filter(p => p.article.id !== article.id);
     this.panierStorage.setPanier(this.panier);
@@ -62,5 +77,4 @@ export class PanierComponent implements OnInit {
     this.panier = [];
     this.panierStorage.clearPanier();
   }
-
 }
